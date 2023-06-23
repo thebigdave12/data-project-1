@@ -1,6 +1,6 @@
 # create_invoices = ####################### TO DO ################################
 
-CREATE_INVOICES = "CREATE TABLE invoices (id SERIAL PRIMARY KEY, stock_code VARCHAR(10), product_category VARCHAR(30), unit_price INT, quantity INT, customer_id INT, FOREIGN KEY(customer_id) REFERENCES customers(id));"
+CREATE_INVOICES = "CREATE TABLE invoices (id SERIAL PRIMARY KEY, stock_code VARCHAR(10), product_category VARCHAR(30), unit_price DECIMAL (5,2), quantity INT, customer_id INT, FOREIGN KEY(customer_id) REFERENCES customers(id));"
 # FOLLOW PROJECT INSTRUCTIONS TO CREATE TABLE FOR INVOICE DATA
 
  

@@ -3,7 +3,7 @@
 import psycopg2
 from psycopg2 import Error
 
-from database import connection
+from database import get_connected
 
 import matplotlib.pyplot as plt
 
@@ -32,12 +32,39 @@ try:
 #### create a variable called product_revenue and set it equal to the get_revenue function invoked 
     product_revenue = get_revenue()
 #### print the product_revenue variable to look at the structure of the variable to help you write the next function
-    
+    # print(product_revenue)
 #### write a function which loops through the product_revenue variable and creates two lists - one with product categories and one with total revenue values
 
-#### follow the project directions to create a function which makes a bar chart in matplotlib using the total revenue from each product category
+    product_categories = []
+    total_revenue = []
 
+    for i in product_revenue:
+        product_categories.append((i[0]))
+        total_revenue.append(int(i[1]))
+
+    # print(product_categories)
+    # print(total_revenue)
+
+    # data_type_product = type(product_categories[4])
+    # data_type_total = type(total_revenue[2])
+
+    # print(data_type_product)
+    # print(data_type_total)
+#### follow the project directions to create a function which makes a bar chart in matplotlib using the total revenue from each product category
+    def create_bar_chart():
+        figure = plt.figure()
+        data = total_revenue
+        labels = product_categories
+        plt.xticks(range(len(labels)), labels, rotation=60)
+        plt.xlabel("Product Category")
+        plt.ylabel("Revenue (USD)")
+        plt.title("Product Revenue by Category")
+        plt.bar(labels, data)
+        return figure
 #### invoke the create_bar_chart function
+
+    create_bar_chart()
+    plt.show()
 
 #### use plt.show() to show a pop-up of the bar chart you created
 
